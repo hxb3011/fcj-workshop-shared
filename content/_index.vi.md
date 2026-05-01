@@ -27,14 +27,11 @@ chapter: false
 
 ![Ảnh đại diện của bạn](/images/avatar.png)
 
-
-
 ### Nội dung báo cáo
 
 1.  [Worklog](1-Worklog/)
 2.  [Proposal](2-Proposal/)
-3.  [Các bài blogs đã dịch](3-BlogsTranslated/)
-4.  [Các events đã tham gia](4-EventParticipated/)
-5.  [Workshop](5-Workshop/)
-6.  [Tự đánh giá](6-Self-evaluation/)
-7.  [Chia sẻ, đóng góp ý kiến](7-Feedback/)
+3.  [Các events đã tham gia](3-EventParticipated/)
+4.  [Workshop](4-Workshop/)
+5.  [Tự đánh giá](5-Self-evaluation/)
+6.  [Chia sẻ, đóng góp ý kiến](6-Feedback/)

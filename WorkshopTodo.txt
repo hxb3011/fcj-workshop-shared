@@ -3,3 +3,14 @@ Sửa đổi tại ./config.toml:
 - params.editURL: https://github.com/hxb3011/fcj-workshop-shared/content/
 - params.description: "Documentation for Workshop"
 - params.author: "hxb3011@outlook.com"
+Sửa đổi tại ./content/_index.md:
+- Full Name: Tran Gia Bao
+- Phone Number: 0989888999
+- Email: trangiabao16082003@gmail.com
+- Major: Software Engineer (|| Information Technology)
+Sửa đổi tại ./content/_index.vi.md:
+- Họ và tên: Trần Gia Bảo
+- Số điện thoại: 0989888999
+- Email: trangiabao16082003@gmail.com
+- Ngành: Kỹ thuật phần mềm (|| Công nghệ thông tin)
+Thay ./static/images/avatar.png: ảnh chính mình
