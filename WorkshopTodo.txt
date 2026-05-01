@@ -1,0 +1,5 @@
+Sửa đổi tại ./config.toml:
+- baseURL: https://hxb3011.github.io/fcj-workshop-shared/
+- params.editURL: https://github.com/hxb3011/fcj-workshop-shared/content/
+- params.description: "Documentation for Workshop"
+- params.author: "hxb3011@outlook.com"
