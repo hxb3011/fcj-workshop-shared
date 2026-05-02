@@ -1,17 +1,13 @@
 ---
 title: "Workshop"
-date: 2024-01-01
-weight: 5
+date: 2026-05-02
+weight: 4
 chapter: false
-pre: " <b> 5. </b> "
+pre: " <b> 4. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-
-# Đảm bảo truy cập Hybrid an toàn đến S3 bằng cách sử dụng VPC endpoint
+#  Hệ thống Quản Lý Log
 
 #### Tổng quan
 
