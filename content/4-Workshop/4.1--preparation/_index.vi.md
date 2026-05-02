@@ -1,18 +1,64 @@
 ---
-title: "Chuẩn bị môi trường"
-date: 2026-05-02
-weight: 1
-chapter: false
-pre: " <b> 4.1. </b> "
+title : "Chuẩn bị môi trường"
+date : 2026-05-02
+weight : 1
+chapter : false
+pre : " <b> 4.1. </b> "
 ---
 
-#### Giới thiệu về VPC Endpoint
-+ Điểm cuối VPC (endpoint) là thiết bị ảo. Chúng là các thành phần VPC có thể mở rộng theo chiều ngang, dự phòng và có tính sẵn sàng cao. Chúng cho phép giao tiếp giữa tài nguyên điện toán của bạn và dịch vụ AWS mà không gây ra rủi ro về tính sẵn sàng.
-+ Tài nguyên điện toán đang chạy trong VPC có thể truy cập Amazon S3 bằng cách sử dụng điểm cuối Gateway. Interface Endpoint  PrivateLink có thể được sử dụng bởi tài nguyên chạy trong VPC hoặc tại TTDL.
+Trong phần này, ta sẽ thực hiện chuẩn bị các công cụ quản trị cần thiết và tiến hành khởi tạo hạ tầng tự động trên AWS bằng Terraform để phục vụ cho dự án Log Management.
 
-#### Tổng quan về workshop
-Trong workshop này, bạn sẽ sử dụng hai VPC.
-+ **"VPC Cloud"** dành cho các tài nguyên cloud như Gateway endpoint và EC2 instance để kiểm tra.
-+ **"VPC On-Prem"** mô phỏng môi trường truyền thống như nhà máy hoặc trung tâm dữ liệu của công ty. Một EC2 Instance chạy phần mềm StrongSwan VPN đã được triển khai trong "VPC On-prem" và được cấu hình tự động để thiết lập đường hầm VPN Site-to-Site với AWS Transit Gateway. VPN này mô phỏng kết nối từ một vị trí tại TTDL (on-prem) với AWS cloud. Để giảm thiểu chi phí, chỉ một phiên bản VPN được cung cấp để hỗ trợ workshop này. Khi lập kế hoạch kết nối VPN cho production workloads của bạn, AWS khuyên bạn nên sử dụng nhiều thiết bị VPN để có tính sẵn sàng cao.
+### 1. Chuẩn bị công cụ quản trị
 
-![overview](/images/5-Workshop/5.1-Workshop-overview/diagram1.png)
+Trước khi bắt đầu, hãy đảm bảo máy tính cá nhân đã được cài đặt và cấu hình đầy đủ các công cụ sau:
+
+*   **AWS CLI:** Đã cấu hình bộ Access Key/Secret Key có quyền **AdministratorAccess**.
+*   **Terraform:** Phiên bản từ 1.0 trở lên để thực thi mã nguồn hạ tầng.
+
+### 2. Khởi tạo hạ tầng với Terraform
+
+Hạ tầng mạng và lưu trữ cốt lõi sẽ được triển khai tự động giúp đảm bảo tính nhất quán.
+
+1. Di chuyển vào thư mục chứa mã nguồn của Workshop.
+2. Thực hiện các lệnh sau để khởi tạo:
+
+```bash
+# Khởi tạo môi trường Terraform
+terraform init
+
+# Kiểm tra các tài nguyên dự kiến khởi tạo
+terraform plan
+
+# Thực thi triển khai hạ tầng lên AWS
+terraform apply -auto-approve
+```
+
+{{% notice info %}}
+Quá trình khởi tạo hạ tầng có thể mất vài phút để AWS thiết lập đầy đủ các tài nguyên Networking.
+{{% /notice %}}
+
+### 3. Kiểm tra tài nguyên hạ tầng
+
+Sau khi Terraform hoàn tất, ta cần truy cập **AWS Management Console** để xác minh các tài nguyên nền tảng đã được khởi tạo thành công.
+
+#### 3.1. Hệ thống mạng ảo (VPC)
+
+Xác nhận rằng các VPC sau đã được tạo:
+
+![vpc-check](/images/4-Workshop/4.1--preparation/vpc-check.png)
+
+#### 3.2. Hệ thống lưu trữ (Amazon S3)
+
+Dữ liệu log sau xử lý sẽ được lưu trữ tại S3. Hãy đảm bảo các bucket sau tồn tại:
+
+![s3-check](/images/4-Workshop/4.1--preparation/s3-check.png)
+
+#### 3.3. Danh mục dữ liệu (AWS Glue)
+
+Để Athena có thể đọc được cấu trúc log trong S3, một Crawler đã được thiết lập sẵn:
+*   **Tên crawler:** `fcaj-v2-log-crawler`.
+*   **Trạng thái:** Phải ở trạng thái **READY**.
+
+![glue-check](/images/4-Workshop/4.1--preparation/glue-check.png)
+
+Chúc mừng bạn đã hoàn thành bước thiết lập hạ tầng nền tảng. Trong bước tiếp theo, chúng ta sẽ cấu hình dịch vụ thông báo SNS.
