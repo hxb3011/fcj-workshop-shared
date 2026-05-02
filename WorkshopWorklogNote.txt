@@ -28,3 +28,4 @@
  - Practice:
     + Set up VPC environment and networking components
     + Write AWS CLI scripts to deploy VPC
+...
