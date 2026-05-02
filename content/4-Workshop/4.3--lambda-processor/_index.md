@@ -1,18 +1,39 @@
 ---
-title : "Access S3 from VPC"
-date : 2024-01-01
-weight : 3
-chapter : false
-pre : " <b> 4.3. </b> "
+title: "Lambda Processor Overview"
+date: 2024-01-01
+weight: 2
+chapter: false
+pre: "<b>4.3 </b>"
 ---
 
-#### Using Gateway endpoint
+## 4.3 Lambda Processor
 
-In this section, you will create **a Gateway eendpoint** to access **Amazon S3** from **an EC2 instance**. **The Gateway endpoint** will allow upload an object to S3 buckets without using **the Public Internet**. To create an endpoint, you must specify the VPC in which you want to create the endpoint, and the service (in this case, S3) to which you want to establish the connection.
+### Overview
 
-![overview](/images/5-Workshop/5.3-S3-vpc/diagram2.png)
+In a log monitoring system, real-time data processing plays a crucial role in early detection of potential issues. Therefore, this section focuses on building a log processing pipeline using SQS and Lambda.
 
-#### Content
+---
 
-- [Create gateway endpoint](3.1-create-gwe/)
-- [Test gateway endpoint](3.2-test-gwe/)
+### Architecture
+
+SQS → Lambda → (DynamoDB / S3 / SNS)
+
+---
+
+### Architecture Description
+
+In this architecture, SQS acts as a message queue that receives log data. When new messages arrive, the Lambda Processor is automatically triggered to process the data. The processed data is then stored in DynamoDB and S3, while notifications are sent via SNS.
+
+---
+
+### Role of Lambda Processor
+
+- Receive messages from SQS  
+- Process log data  
+- Store data and send notifications  
+
+---
+
+### Result
+
+The log processing system operates in an end-to-end manner, ensuring that data is reliably received, processed, and stored.

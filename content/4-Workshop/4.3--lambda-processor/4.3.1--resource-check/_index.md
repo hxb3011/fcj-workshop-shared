@@ -1,40 +1,49 @@
 ---
-title : "Create a gateway endpoint"
-date : 2024-01-01 
-weight : 1
-chapter : false
-pre : " <b> 4.3.1 </b> "
+title: "Resource Check"
+date: 2024-01-01
+weight: 3
+chapter: false
+pre: "<b>4.3.1 </b>"
 ---
 
-1. Open the [Amazon VPC console](https://us-east-1.console.aws.amazon.com/vpc/home?region=us-east-1#Home:)
-2. In the navigation pane, choose **Endpoints**, then click **Create Endpoint**:
+## 4.3.1 Resource Check
 
-{{% notice note %}}
-You will see **6 existing VPC endpoints** that support **AWS Systems Manager (SSM)**. These endpoints were deployed automatically by the **CloudFormation Templates** for this workshop.
-{{% /notice %}}
+### Objective
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/endpoints.png)
+Before performing the test, it is necessary to ensure that all required resources have been properly created and configured.
 
-3. In the Create endpoint console:
-+ Specify name of the endpoint: ```s3-gwe```
-+ In service category, choose **AWS services**
+---
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/create-s3-gwe1.png)
+### DynamoDB Verification
 
-+ In **Services**, type ```s3``` in the search box and choose the service with type **gateway**
+The system shows that three DynamoDB tables have been successfully created:
+- fcaj-v2-AppClients  
+- fcaj-v2-AppLogs  
+- fcaj-v2-NotiTTL  
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/services.png)
+![DynamoDB tables](/status/images/4-Workshop/4.3--lambda-processor/4.3.1--resource-check/dynamodb.png)  
+*Figure 4.3.1-1: DynamoDB tables have been successfully created.*
 
-+ For VPC, select **VPC Cloud** from the drop-down.
-+ For **Configure route tables**, select the route table that is already associated with **two subnets** (note: this is not the main route table for the VPC, but a second route table created by CloudFormation).
+---
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/vpc.png)
+### SQS Verification
 
-+ **For Policy**, leave the default option, **Full Access**, to allow full access to the service. You will deploy **a VPC endpoint policy** in a later lab module to demonstrate restricting access to **S3 buckets** based on policies.
+The queue `fcaj-v2-log-queue` has been successfully created and is ready for use.
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/policy.png)
+![SQS queue](/status/images/4-Workshop/4.3--lambda-processor/4.3.1--resource-check/sqs.png)  
+*Figure 4.3.1-2: SQS queue has been successfully created.*
 
-+ Do not add a tag to the VPC endpoint at this time.
-+ Click **Create endpoint**, then click x after receiving a successful creation message.
+---
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/complete.png)
+### Lambda Verification
+
+The Lambda function has been successfully deployed and configured to be triggered by SQS.
+
+![Lambda trigger](/status/images/4-Workshop/4.3--lambda-processor/4.3.1--resource-check/lambda.png)  
+*Figure 4.3.1-3: Lambda Processor is connected to SQS.*
+
+---
+
+### Conclusion
+
+All required resources, including DynamoDB, SQS, and Lambda Processor, have been properly configured and are ready for the testing phase.

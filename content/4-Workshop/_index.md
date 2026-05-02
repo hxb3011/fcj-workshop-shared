@@ -10,22 +10,19 @@ pre: " <b> 4. </b> "
 
 #### Overview
 
-In this workshop, we will build a **Serverless Log Management & Analytics Pipeline**. This unified solution is designed to collect, process, and analyze logs centrally for multiple applications running on the AWS platform.
+**AWS PrivateLink** provides private connectivity to AWS services from VPCs or on-premises data centers without exposing traffic to the public internet.
 
-The system addresses the challenge of log data being fragmented across various servers, enabling us to monitor and troubleshoot issues more effectively. Our core data flow will include:
-*   **Collection:** Using CloudWatch Agent to centralize logs from various applications.
-*   **Orchestration:** Leveraging Amazon SQS to ensure stable and asynchronous log ingestion.
-*   **Processing:** Utilizing AWS Lambda to perform real-time log classification.
-*   **Storage:** Metadata is stored in **DynamoDB (Hot Data)** for fast querying, while raw logs are saved in **Amazon S3 (Cold Data)** for cost-optimized long-term storage.
-*   **Analytics & Alerting:** Using Amazon Athena to query historical logs and Amazon SNS to send instant error notifications.
+In this lab, we will learn how to create, configure, and test VPC endpoints to allow your workloads to access AWS services without going through the public internet.
+
+We will create two types of endpoints to access Amazon S3: gateway VPC endpoint and interface VPC endpoint. These two types of VPC endpoints provide various benefits depending on whether you access S3 from the cloud environment or from on-premises data centers.
++ **Gateway** - Create a gateway endpoint to send traffic to Amazon S3 or DynamoDB using private IP addresses. You route traffic from your VPC to the gateway endpoint using route tables.
++ **Interface** - Create an interface endpoint to send traffic to endpoint services using Network Load Balancer for traffic distribution. Traffic for the endpoint service is resolved using DNS.
 
 #### Content
 
-1. [Environment Preparation](4.1--preparation/)
-2. [SNS Notification Service](4.2--sns-verification/)
-3. [Data Processing Flow from SQS](4.3--lambda-processor/)
-4. [Automated Log Ingestion Flow](4.4--log-ingestion/)
-5. [Registration App Operation](4.5--registration-app/)
-6. [Query and Analytics App Operation](4.6--query-app/)
-7. [Advanced Scaling Solutions](4.7--advanced-concepts/)
-8. [Resource Cleanup](4.8--resource-cleanup/)
+1. [Workshop Overview](5.1-Workshop-overview/)
+2. [Preparation](5.2-Prerequiste/)
+3. [Accessing S3 from VPC](5.3-S3-vpc/)
+4. [Accessing S3 from On-premises Data Center](5.4-S3-onprem/)
+5. [VPC Endpoint Policies (additional)](5.5-Policy/)
+6. [Resource Cleanup](5.6-Cleanup/)

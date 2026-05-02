@@ -1,11 +1,11 @@
 ---
-title: "Chạy Lambda Processor"
+title: "Lambda Processor"
 date: 2024-01-01
 weight: 3
 chapter: false
 pre: "<b>4.3 </b>"
 ---
-#4.3.2. Chạy Lambda Processor
+#4.3. Lambda Processor
 
 ## Tổng quan
 

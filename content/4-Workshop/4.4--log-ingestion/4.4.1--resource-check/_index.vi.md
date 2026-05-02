@@ -3,7 +3,7 @@ title: "Kiểm tra tài nguyên"
 date: 2024-01-01
 weight: 3
 chapter: false
-pre: "<b>4.4 </b>"
+pre: "<b>4.4.1 </b>"
 ---
 
 ## 4.4.1 Kiểm tra tài nguyên

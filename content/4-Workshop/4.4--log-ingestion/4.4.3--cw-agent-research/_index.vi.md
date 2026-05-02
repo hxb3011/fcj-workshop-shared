@@ -1,31 +1,59 @@
 ---
-title: "Workshop"
-date: 2026-05-02
-weight: 4
+title: "Nghiên cứu CloudWatch Agent"
+date: 2024-01-01
+weight: 3
 chapter: false
-pre: " <b> 4. </b> "
+pre: "<b>4.4.3 </b>"
 ---
 
-# Hệ thống Quản Lý Log
+## 4.4.3 Nghiên cứu CloudWatch Agent
 
-#### Tổng quan
+### Mục tiêu
 
-Trong bài thực hành này, chúng ta sẽ cùng nhau xây dựng một **Serverless Log Management & Analytics Pipeline**. Đây là một giải pháp hợp nhất giúp thu thập, xử lý và phân tích log tập trung cho nhiều ứng dụng chạy trên nền tảng AWS.
+Tìm hiểu CloudWatch Agent và cách sử dụng để thu thập log từ hệ thống thực tế, từ đó mở rộng khả năng ingest dữ liệu cho pipeline.
 
-Hệ thống giải quyết vấn đề phân mảnh dữ liệu log trên nhiều máy chủ khác nhau, giúp chúng ta giám sát và khắc phục sự cố hiệu quả hơn. Luồng dữ liệu chính của chúng ta sẽ bao gồm:
-*   **Thu thập:** Sử dụng CloudWatch Agent để tập trung log từ các ứng dụng.
-*   **Điều phối:** Dùng Amazon SQS để đảm bảo việc tiếp nhận log ổn định và bất đồng bộ.
-*   **Xử lý:** AWS Lambda thực hiện phân loại log theo thời gian thực.
-*   **Lưu trữ:** Metadata được lưu tại **DynamoDB (Hot Data)** để truy vấn nhanh, trong khi raw log được lưu tại **Amazon S3 (Cold Data)** để lưu trữ dài hạn với chi phí tối ưu.
-*   **Phân tích & Cảnh báo:** Sử dụng Amazon Athena để truy vấn log lịch sử và Amazon SNS để gửi thông báo lỗi tức thì.
+---
 
-#### Nội dung
+### Tổng quan
 
-1. [Chuẩn bị môi trường](4.1--preparation/)
-2. [Dịch vụ thông báo SNS](4.2--sns-verification/)
-3. [Luồng xử lý dữ liệu từ SQS](4.3--lambda-processor/)
-4. [Luồng thu thập Log tự động](4.4--log-ingestion/)
-5. [Vận hành App Đăng ký](4.5--registration-app/)
-6. [Vận hành App Truy vấn và Phân tích](4.6--query-app/)
-7. [Giải pháp mở rộng nâng cao](4.7--advanced-concepts/)
-8. [Dọn dẹp tài nguyên](4.8--resource-cleanup/)
+CloudWatch Agent là một công cụ do AWS cung cấp, cho phép thu thập log và metric từ các máy chủ (EC2 hoặc on-premise) và gửi trực tiếp lên CloudWatch.
+
+Khác với việc tạo log thủ công trong CloudWatch, CloudWatch Agent giúp tự động hóa quá trình thu thập log từ hệ thống, đặc biệt hữu ích trong môi trường production.
+
+---
+
+### Cách hoạt động
+
+Quy trình hoạt động của CloudWatch Agent bao gồm:
+
+- Cài đặt CloudWatch Agent trên máy chủ (EC2)  
+- Cấu hình file agent (JSON hoặc wizard) để xác định log cần thu thập  
+- Agent đọc log từ hệ thống (ví dụ: `/var/log/...`)  
+- Gửi log lên CloudWatch Logs  
+- Từ CloudWatch, log tiếp tục đi vào pipeline xử lý (Lambda Shipper → SQS → Lambda Processor)  
+
+---
+
+### Ứng dụng trong hệ thống
+
+Trong hệ thống này, CloudWatch Agent có thể được sử dụng để:
+
+- Thu thập log thực tế từ ứng dụng chạy trên EC2  
+- Tự động gửi log lên CloudWatch mà không cần thao tác thủ công  
+- Kết nối trực tiếp với pipeline ingest đã xây dựng ở phần 4.4  
+
+---
+
+### So sánh với cách ingest hiện tại
+
+| Tiêu chí | Log thủ công | CloudWatch Agent |
+|----------|-------------|------------------|
+| Cách tạo log | Tạo test event | Tự động từ hệ thống |
+| Tính tự động | Thấp | Cao |
+| Ứng dụng thực tế | Hạn chế | Phù hợp production |
+
+---
+
+### Kết luận
+
+CloudWatch Agent giúp tự động hóa quá trình thu thập log và mở rộng hệ thống ingest từ môi trường thử nghiệm sang môi trường thực tế. Đây là một thành phần quan trọng để xây dựng hệ thống giám sát và xử lý log hoàn chỉnh.
