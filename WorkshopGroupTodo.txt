@@ -1,2 +1,3 @@
 Viết lại hoàn toàn ./content/1-Worklog/_index.md.
 Viết lại hoàn toàn ./content/1-Worklog/_index.vi.md.
+Bổ sung ảnh sự kiện.

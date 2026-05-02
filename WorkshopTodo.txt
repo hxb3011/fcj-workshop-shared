@@ -30,3 +30,10 @@ Sửa đổi tại ./content/1-Worklog/1.2-Week2/_index.md:
 Sửa đổi tại ./content/1-Worklog/1.2-Week2/_index.vi.md:
 * Kiểm tra công việc
 * Kiểm tra lại ngày bạn tham gia (điểm danh)
+Kiểm tra tại ./content/3-EventParticipated/_index.*:
+* Nội dung
+* Chính tả
+Kiểm tra tại ./content/3-EventParticipated/3.1-Event1/_index.*:
+* Nội dung
+* Chính tả
+* Ảnh
