@@ -1,40 +1,41 @@
+## 4.3.1 Kiểm tra tài nguyên
+
+### Mục tiêu
+
+Trước khi tiến hành kiểm thử, cần đảm bảo tất cả các tài nguyên đã được tạo và cấu hình chính xác.
+
 ---
-title : "Kiểm tra trạng thái hạ tầng xử lý"
-date : 2026-05-02
-weight : 1
-chapter : false
-pre : " <b> 4.3.1 </b> "
+
+### Kiểm tra DynamoDB
+
+Kiểm tra hệ thống cho thấy đã tạo thành công 3 bảng:
+- fcaj-v2-AppClients  
+- fcaj-v2-AppLogs  
+- fcaj-v2-NotiTTL  
+
+![DynamoDB tables](../images/5-Workshop/4.3.1/dynamodb.png)
+*Hình 4.3.1-1: Các bảng DynamoDB đã được tạo thành công.*
+
 ---
 
-1. Mở [Amazon VPC console](https://us-east-1.console.aws.amazon.com/vpc/home?region=us-east-1#Home:)
-2. Trong thanh điều hướng, chọn **Endpoints**, click **Create Endpoint**:
+### Kiểm tra SQS
 
-{{% notice note %}}
-Bạn sẽ thấy 6 điểm cuối VPC hiện có hỗ trợ AWS Systems Manager (SSM). Các điểm cuối này được Mẫu CloudFormation triển khai tự động cho workshop này.
-{{% /notice %}}
+Kiểm tra cho thấy queue `fcaj-v2-log-queue` đã được tạo và sẵn sàng sử dụng.
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/endpoints.png)
+![SQS queue](../images/5-Workshop/4.3.1/sqs.png)
+*Hình 4.3.1-2: SQS queue được khởi tạo thành công.*
 
-3. Trong Create endpoint console:
-+ Đặt tên cho endpoint: s3-gwe
-+ Trong service category, chọn **aws services**
+---
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/create-s3-gwe1.png)
+### Kiểm tra Lambda
 
-+ Trong **Services**, gõ "s3" trong hộp tìm kiếm và chọn dịch vụ với loại **gateway**
+Kiểm tra Lambda function đã được deploy và đã kết nối với SQS để nhận message tự động.
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/services.png)
+![Lambda trigger](../images/5-Workshop/4.3.1/lambda.png)
+*Hình 4.3.1-3: Lambda Processor đã được kết nối với SQS.*
 
-+ Đối với VPC, chọn **VPC Cloud** từ drop-down menu.
-+ Đối với Route tables, chọn bảng định tuyến mà đã liên kết với 2 subnets (lưu ý: đây không phải là bảng định tuyến chính cho VPC mà là bảng định tuyến thứ hai do CloudFormation tạo).
+---
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/vpc.png)
+### Kết luận
 
-+ Đối với Policy, để tùy chọn mặc định là Full access để cho phép toàn quyền truy cập vào dịch vụ. Bạn sẽ triển khai VPC endpoint policy trong phần sau để chứng minh việc hạn chế quyền truy cập vào S3 bucket dựa trên các policies.
-
-![endpoint](/images/5-Workshop/5.3-S3-vpc/policy.png)
-
-+ Không thêm tag vào VPC endpoint.
-+ Click Create endpoint, click x sau khi nhận được thông báo tạo thành công.
-
-![endpoint](/images/5-Workshop/5.3-S3-vpc/complete.png)
+Tất cả các tài nguyên DynamoDB, SQS và Lambda Processor đã được cấu hình đầy đủ và sẵn sàng cho bước kiểm thử tiếp theo.
