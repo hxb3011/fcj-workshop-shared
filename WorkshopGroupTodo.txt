@@ -1,4 +1,3 @@
 Viết lại hoàn toàn ./content/1-Worklog/_index.md.
 Viết lại hoàn toàn ./content/1-Worklog/_index.vi.md.
-Cập nhật Proposal >=3
-Cập nhật Proposal date.
+Cập nhật Proposal date, Implementation Phases, Budget, Timeline.
