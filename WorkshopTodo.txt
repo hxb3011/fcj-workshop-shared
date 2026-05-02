@@ -1,6 +1,6 @@
 Sửa đổi tại ./config.toml:
 - baseURL: https://hxb3011.github.io/fcj-workshop-shared/
-- params.editURL: https://github.com/hxb3011/fcj-workshop-shared/content/
+- params.editURL: https://github.com/hxb3011/fcj-workshop-shared/tree/main/content/
 - params.description: "Documentation for Workshop"
 - params.author: "hxb3011@outlook.com"
 Sửa đổi tại ./content/_index.md:
@@ -8,11 +8,13 @@ Sửa đổi tại ./content/_index.md:
 - Phone Number: 0989888999
 - Email: trangiabao16082003@gmail.com
 - Major: Software Engineer (|| Information Technology)
+- Class: AWS032026
 Sửa đổi tại ./content/_index.vi.md:
 - Họ và tên: Trần Gia Bảo
 - Số điện thoại: 0989888999
 - Email: trangiabao16082003@gmail.com
 - Ngành: Kỹ thuật phần mềm (|| Công nghệ thông tin)
+- Lớp: AWS032026
 Thay ./static/images/avatar.png: ảnh chính mình
 Sửa đổi tại ./content/1-Worklog/_index.md:
 * Todo Cần viết lại

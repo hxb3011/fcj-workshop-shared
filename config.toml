@@ -12,7 +12,7 @@ home = [ "HTML", "RSS", "JSON"]
 
 [params]
   themeVariant = "workshop"
-  editURL = "https://github.com/hxb3011/fcj-workshop-shared/content/"
+  editURL = "https://github.com/hxb3011/fcj-workshop-shared/tree/main/content/"
   description = "Documentation for Workshop"
   author = "hxb3011@outlook.com"
   showVisitedLinks = true

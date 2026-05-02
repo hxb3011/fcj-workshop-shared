@@ -20,10 +20,11 @@ pre: " <b> 4.1. </b> "
 - **Uyen** - Employer Branding, GoTymeX
 - **Phuc (Jason) Dang** - Cloud Solution Architect, Platform Engineering Team, GoTymeX
 - **Hai Bui** - Platform Engineering Manager, Platform Engineering Team, GoTymeX
-- **Hieu Nguyen** - AI Engineer, AWS
-- **Phong Nguyen** - Senior Software Engineer, AWS
+- **Nghi Danh** - AI Engineer, Renova Cloud
+- **Phong Nguyen** - Senior Software Manager, Sympli
 - **Phat Pham** - Software Engineer, Katalon
 - **Nguyen Hoang Viet Phap** - Cloud Engineer, VPBank
+- **Thinh Nguyen** - DevOps Manager, FCAJ
 
 ### Key Highlights
 
@@ -232,6 +233,14 @@ Attending the **AWS First Cloud AI Journey Community Day 2026** was an inspiring
 
 #### Some event photos
 
-*Add your event photos here*
+![GoTyme](/images/3-EventParticipated/3.1-Event1/GoTyme.jpg)
+![GoTymeTech](/images/3-EventParticipated/3.1-Event1/GoTymeTech.jpg)
+![DevOps](/images/3-EventParticipated/3.1-Event1/DevOps.jpg)
+![PlatformAsProduct](/images/3-EventParticipated/3.1-Event1/PlatformAsProduct.jpg)
+![CI_CD](/images/3-EventParticipated/3.1-Event1/CI_CD.jpg)
+![Langfuse](/images/3-EventParticipated/3.1-Event1/Langfuse.jpg)
+![Worktree](/images/3-EventParticipated/3.1-Event1/Worktree.jpg)
+![AIAgentTools](/images/3-EventParticipated/3.1-Event1/AIAgentTools.jpg)
+![GraphRAG](/images/3-EventParticipated/3.1-Event1/GraphRAG.jpg)
 
 > Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
