@@ -1,3 +1,11 @@
+---
+title: "Kiểm tra tài nguyên"
+date: 2024-01-01
+weight: 3
+chapter: false
+pre: "<b>4.3.1 </b>"
+---
+
 ## 4.3.1 Kiểm tra tài nguyên
 
 ### Mục tiêu
@@ -13,7 +21,7 @@ Kiểm tra hệ thống cho thấy đã tạo thành công 3 bảng:
 - fcaj-v2-AppLogs  
 - fcaj-v2-NotiTTL  
 
-![DynamoDB tables](/static/images/4-Workshop/4.3.1--resource-check/dynamodb.png)
+![DynamoDB tables](/images/4-Workshop/4.3--lambda-processor//4.3.1--resource-check/dynamodb.png)
 *Hình 4.3.1-1: Các bảng DynamoDB đã được tạo thành công.*
 
 ---
@@ -22,7 +30,7 @@ Kiểm tra hệ thống cho thấy đã tạo thành công 3 bảng:
 
 Kiểm tra cho thấy queue `fcaj-v2-log-queue` đã được tạo và sẵn sàng sử dụng.
 
-![SQS queue](/static/images/4-Workshop/4.3.1--resource-check/sqs.png)
+![SQS queue](/images/4-Workshop/4.3--lambda-processor/4.3.1--resource-check/sqs.png)
 *Hình 4.3.1-2: SQS queue được khởi tạo thành công.*
 
 ---
@@ -31,7 +39,7 @@ Kiểm tra cho thấy queue `fcaj-v2-log-queue` đã được tạo và sẵn s�
 
 Kiểm tra Lambda function đã được deploy và đã kết nối với SQS để nhận message tự động.
 
-![Lambda trigger](/static/images/4-Workshop/4.3.1--resource-check/lambda.png)
+![Lambda trigger](/images/4-Workshop/4.3--lambda-processor//4.3.1--resource-check/lambda.png)
 *Hình 4.3.1-3: Lambda Processor đã được kết nối với SQS.*
 
 ---
