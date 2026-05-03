@@ -13,16 +13,6 @@ pre: " <b> 2. </b> "
 
 The Serverless Log Management & Analytics Pipeline is designed to provide centralized log ingestion and analysis for diverse applications, running on AWS. It supports high‑volume log streams from multiple sources, with scalability to handle millions of events per day. The pipeline leverages AWS Serverless services to deliver real‑time classification, optimized long‑term storage, and cost‑efficient analytics. Access control is managed through AWS Identity and Access Management (IAM), ensuring secure usage across designated teams.
 
-SERVERLESS LOG MANAGEMENT & ANALYTICS PIPELINE
-1.Executive Summary
-Dự án tập trung xây dựng một hệ thống quản lý và phân tích nhật ký (log) tập trung, sử dụng hoàn toàn kiến trúc Serverless trên nền tảng điện toán đám mây AWS. Hệ thống được thiết kế để giải quyết bài toán tiếp nhận dữ liệu log khổng lồ từ nhiều ứng dụng khác nhau, xử lý phân loại thời gian thực và lưu trữ tối ưu cho mục đích phân tích dài hạn.
-2.Problem Statement
-What’s the Problem
-Log ứng dụng nằm rải rác trên nhiều máy chủ, gây khó khăn cho việc giám sát tập trung.
-*The Solution
-Hệ thống triển khai sử dụng cloudwatch agent gửi log lên vào cloudwatch , từ cloud watch sẽ gửi vào đường ống dữ liệu (SQS) tiếp nhận ổ định thông qua lambda , từ sqs gọi aws lambda để phân loại dữ liệu theo thời gian thực: lưu trữ metadata tại DynamoDB (Hot Data) để truy vấn nhanh và đẩy payload thô lên Amazon S3 (Cold Data) phục vụ phân tích lâu dài bằng Amazon Athena và Aws glue,nếu có lỗi sẽ báo qua SNS. Đồng thời triển khai một app đăng kí tài khoản sử dụng cognito và iam đăng kí người dùng vào sns. Với amazon athena thì triển khai một app sử dụng ec2 để đăng nhập và truy vấn dữ liệu log
-3.Solution Architecture
-
 ### 2. Problem Statement
 #### What’s the Problem?
 
