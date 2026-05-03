@@ -1,3 +1,15 @@
 Viết lại hoàn toàn ./content/1-Worklog/_index.md.
 Viết lại hoàn toàn ./content/1-Worklog/_index.vi.md.
 Cập nhật Proposal date, Implementation Phases, Budget, Timeline.
+
+4.5--registration-app: Vận hành App Đăng ký
+
+4.5.1--resource-check: Kiểm tra hạ tầng mạng VPC, cụm dịch vụ ECS Fargate, User Pool trong Cognito và các IAM Policy liên quan.  
+
+4.5.2--registration-test: Thực hiện test API qua Postman; xác minh email thông báo, tài khoản trong Cognito, Access Key được cấp và thông tin trong bảng AppClients.  
+
+4.6--query-app: Vận hành App Truy vấn và Phân tích
+
+4.6.1--resource-check: Kiểm tra các bảng đã tạo trong Glue/Athena (chạy Glue lần đầu); kiểm tra VPC 2 và Instance EC2.  
+
+4.6.2--query-test: Dùng Postman thực hiện đăng nhập (Login), truy vấn Log gần nhất (Hot) và truy vấn Log cũ theo ngày (Cold từ S3).  

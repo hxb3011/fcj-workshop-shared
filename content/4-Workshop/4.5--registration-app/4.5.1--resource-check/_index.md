@@ -1,57 +1,45 @@
 ---
-title : "Prepare the environment"
-date : 2025-05-02
+title : "Check the registration portal infrastructure"
+date : 2026-05-02
 weight : 1
 chapter : false
 pre : " <b> 4.5.1 </b> "
 ---
 
-To prepare for this part of the workshop you will need to:
-+ Deploying a CloudFormation stack 
-+ Modifying a VPC route table. 
+## 4.4.1 Resource Check
 
-These components work together to simulate on-premises DNS forwarding and name resolution.
+### Objective
+Verify that the Registration App and the Query & Analysis App have been properly configured to ensure the system is correctly set up before testing.
 
-#### Deploy the CloudFormation stack
+### Check the created VPCs
+Confirm that the VPCs for the Registration App and the Query & Analysis App have been initialized as follows:
 
-The CloudFormation template will create additional services to support an on-premises simulation:
-+ One Route 53 Private Hosted Zone that hosts Alias records for the PrivateLink S3 endpoint
-+ One Route 53 Inbound Resolver endpoint that enables "VPC Cloud" to resolve inbound DNS resolution requests to the Private Hosted Zone
-+ One Route 53 Outbound Resolver endpoint that enables "VPC On-prem" to forward DNS requests for S3 to "VPC Cloud"
+![vpcs-check](/images/4-Workshop/4.5--registration-app/4.5.1--resource-check/001_vpc_check.png)
 
-![route 53 diagram](/images/5-Workshop/5.4-S3-onprem/route53.png)
+### Check the created subnets
+Confirm that the subnets corresponding to the VPCs have been created:
 
-1. Click the following link to open the [AWS CloudFormation console](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://s3.amazonaws.com/reinvent-endpoints-builders-session/R53CF.yaml&stackName=PLOnpremSetup). The required template will be pre-loaded into the menu. Accept all default and click Create stack.
+![subnets-check](/images/4-Workshop/4.5--registration-app/4.5.1--resource-check/002_subnet_check.png)
 
-![Create stack](/images/5-Workshop/5.4-S3-onprem/create-stack.png)
+### Check the created route tables
+Confirm that the route tables corresponding to the subnets have been created:
 
-![Button](/images/5-Workshop/5.4-S3-onprem/create-stack-button.png)
+![route table check](/images/4-Workshop/4.5--registration-app/4.5.1--resource-check/003_route_table.png)
 
-It may take a few minutes for stack deployment to complete. You can continue with the next step without waiting for the deployemnt to finish.
+### Check the created internet gateways
+Confirm that the internet gateways corresponding to the VPCs have been created:
 
-#### Update on-premise private route table
+![internet gateway check](/images/4-Workshop/4.5--registration-app/4.5.1--resource-check/004_Internet_gateway.png)
 
-This workshop uses a strongSwan VPN running on an EC2 instance to simulate connectivty between an on-premises datacenter and the AWS cloud. Most of the required components are provisioned before your start. To finalize the VPN configuration, you will modify the "VPC On-prem" routing table to direct traffic destined for the cloud to the strongSwan VPN instance.
+### Check the created security groups
+Confirm that the security groups corresponding to the VPCs have been created:
 
-1. Open the Amazon EC2 console 
+![security group check](/images/4-Workshop/4.5--registration-app/4.5.1--resource-check/005_security_group.png)
 
-2. Select the instance named infra-vpngw-test. From the Details tab, copy the Instance ID and paste this into your text editor
+### Check the created registration app (Amazon ECS)
+Confirm that the registration app has been created:
 
-![ec2 id](/images/5-Workshop/5.4-S3-onprem/ec2-onprem-id.png)
+![app register check](/images/4-Workshop/4.5--registration-app/4.5.1--resource-check/006_app_regist.png)
 
-3. Navigate to the VPC menu by using the Search box at the top of the browser window.
-
-4. Click on Route Tables, select the RT Private On-prem route table, select the Routes tab, and click Edit Routes.
-
-![rt](/images/5-Workshop/5.4-S3-onprem/rt.png)
-
-5. Click Add route.
-+ Destination: your Cloud VPC cidr range
-+ Target: ID of your infra-vpngw-test instance (you saved in your editor at step 1)
-
-![add route](/images/5-Workshop/5.4-S3-onprem/add-route.png)
-
-6. Click Save changes
-
-
-
+### Description
+The system has successfully set up the VPCs, and the registration app is ready to receive registration requests.

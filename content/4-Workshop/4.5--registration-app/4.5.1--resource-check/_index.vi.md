@@ -6,53 +6,48 @@ chapter : false
 pre : " <b> 4.5.1 </b> "
 ---
 
-Để chuẩn bị cho phần này của workshop, bạn sẽ cần phải:
-+ Triển khai CloudFormation stack
-+ Sửa đổi bảng định tuyến VPC.
+## 4.4.1 Kiểm tra tài nguyên
 
-Các thành phần này hoạt động cùng nhau để mô phỏng DNS forwarding và name resolution.
+### Mục tiêu
 
-#### Triển khai CloudFormation stack
+Kiểm tra App Đăng ký và App Truy vấn và Phân tích đã được cấu hình phù hợp nhằm đảm bảo hệ thống được cấu hình chính xác trước khi thực hiện kiểm thử.
 
-Mẫu CloudFormation sẽ tạo các dịch vụ bổ sung để hỗ trợ mô phỏng môi trường truyền thống:
-+ Một Route 53 Private Hosted Zone lưu trữ các bản ghi Bí danh (Alias records) cho điểm cuối PrivateLink S3
-+ Một Route 53 Inbound Resolver endpoint cho phép "VPC Cloud" giải quyết các yêu cầu resolve DNS gửi đến Private Hosted Zone
-+ Một Route 53 Outbound Resolver endpoint cho phép "VPC On-prem" chuyển tiếp các yêu cầu DNS cho S3 sang "VPC Cloud"
+### Kiểm tra các VPC đã tạo
 
-![route 53 diagram](/images/5-Workshop/5.4-S3-onprem/route53.png)
+Xác nhận rằng các VPC cho App Đăng ký, App Truy vấn và Phân tích đã được khởi tạo như sau:
 
-1. Click link sau để mở [AWS CloudFormation console](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://s3.amazonaws.com/reinvent-endpoints-builders-session/R53CF.yaml&stackName=PLOnpremSetup). Mẫu yêu cầu sẽ được tải sẵn vào menu. Chấp nhận tất cả mặc định và nhấp vào Tạo stack.
+![vpcs-check](/images/4-Workshop/4.5--registration-app/4.5.1--resource-check/001_vpc_check.png)
 
-![Create stack](/images/5-Workshop/5.4-S3-onprem/create-stack.png)
+### Kiểm tra các subnet đã tạo
 
-![Button](/images/5-Workshop/5.4-S3-onprem/create-stack-button.png)
+Xác nhận rằng subnet tương ứng với các VPC đã được tạo:
 
-Có thể mất vài phút để triển khai stack hoàn tất. Bạn có thể tiếp tục với bước tiếp theo mà không cần đợi quá trình triển khai kết thúc.
+![subnets-check](/images/4-Workshop/4.5--registration-app/4.5.1--resource-check/002_subnet_check.png)
 
-####  Cập nhật bảng định tuyến private on-premise 
+### Kiểm tra các route table đã tạo
 
-Workshop này sử dụng StrongSwan VPN chạy trên EC2 instance để mô phỏng khả năng kết nối giữa trung tâm dữ liệu truyền thống và môi trường cloud AWS. Hầu hết các thành phần bắt buộc đều được cung cấp trước khi bạn bắt đầu. Để hoàn tất cấu hình VPN, bạn sẽ sửa đổi bảng định tuyến "VPC on-prem" để hướng lưu lượng đến cloud đi qua StrongSwan VPN instance.
+Xác nhận rằng route table tương ứng với các subnets đã được tạo:
 
-1. Mở Amazon EC2 console 
+![route table check](/images/4-Workshop/4.5--registration-app/4.5.1--resource-check/003_route_table.png)
 
-2. Chọn instance tên infra-vpngw-test. Từ Details tab, copy Instance ID và paste vào text editor của bạn để sử dụng ở những bước tiếp theo
+### Kiểm tra các internet gateway đã tạo
 
-![ec2 id](/images/5-Workshop/5.4-S3-onprem/ec2-onprem-id.png)
+Xác nhận rằng internet gateway tương ứng với các VPC đã được tạo:
 
-3. Đi đến VPC menu bằng cách gõ "VPC" vào Search box
+![internet gateway check](/images/4-Workshop/4.5--registration-app/4.5.1--resource-check/004_Internet_gateway.png)
 
-4. Click vào Route Tables, chọn RT Private On-prem route table, chọn Routes tab, và click Edit Routes.
+### Kiểm tra các security group đã tạo
 
-![rt](/images/5-Workshop/5.4-S3-onprem/rt.png)
+Xác nhận rằng security group tương ứng với các VPC đã được tạo:
 
-5. Click Add route.
-+ Destination: CIDR block của Cloud VPC
-+ Target: ID của infra-vpngw-test instance (bạn đã lưu lại ở bước trên)
+![security group check](/images/4-Workshop/4.5--registration-app/4.5.1--resource-check/005_security_group.png)
 
-![add route](/images/5-Workshop/5.4-S3-onprem/add-route.png)
+### Kiểm tra app đăng ký (Amazon ECS) đã tạo
 
-6. Click Save changes
+Xác nhận rằng app đăng ký đã được tạo:
 
+![app register check](/images/4-Workshop/4.5--registration-app/4.5.1--resource-check/006_app_regist.png)
 
+### Mô tả
 
-
+Hệ thống đã thiết lập thành công các VPC và app đăng ký đã sẵn sàng  để nhận yêu cầu đăng ký app.

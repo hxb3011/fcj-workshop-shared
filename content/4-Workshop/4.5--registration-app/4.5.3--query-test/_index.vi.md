@@ -6,38 +6,34 @@ chapter : false
 pre : " <b> 4.5.3 </b> "
 ---
 
-Trong phần này, bạn sẽ tạo và kiểm tra Interface Endpoint  S3 bằng cách sử dụng môi trường truyền thống mô phỏng.
+## 4.4.3 Kiểm tra thao tác đăng ký app
 
-1. Quay lại Amazon VPC menu. Trong thanh điều hướng bên trái, chọn Endpoints, sau đó click Create Endpoint.
+### Mục tiêu
 
-2. Trong Create endpoint console:
-+ Đặt tên interface endpoint
-+ Trong Service category, chọn **aws services** 
+Kiểm tra thao tác đăng nhập, truy vấn log ở app phân tích có hoạt động đúng như mong đợi hay không.
 
-![name](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint1.png)
+### Lấy địa chỉ của app phân tích
 
-3.  Trong Search box, gõ S3 và nhấn Enter. Chọn endpoint có tên com.amazonaws.us-east-1.s3. Đảm bảo rằng cột Type có giá trị Interface.
+![get address](/images/4-Workshop/4.5--registration-app/4.5.3--query-test/001_get_address.png)
 
-![service](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint2.png)
+### Thực hiện đăng nhập bằng api đăng nhập bằng Postman để lấy access token
 
-4. Đối với VPC, chọn VPC Cloud từ drop-down.
-{{% notice warning %}}
-Đảm bảo rằng bạn chọn "VPC Cloud" và không phải "VPC On-prem"
-{{% /notice %}}
-+ Mở rộng **Additional settings** và đảm bảo rằng Enable DNS name *không* được chọn (sẽ sử dụng điều này trong phần tiếp theo của workshop)
+![login](/images/4-Workshop/4.5--registration-app/4.5.3--query-test/002_login.png)
 
-![vpc](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint3.png)
+### Thực hiện lấy logs gần nhất với Api tương ứng bằng Postman và nhận kết quả
 
-5. Chọn 2 subnets trong AZs sau: us-east-1a and us-east-1b
+![hot log](/images/4-Workshop/4.5--registration-app/4.5.3--query-test/003_hot_log.png)
 
-![subnets](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint4.png)
+### Thực hiện lấy logs cũ với Api tương ứng bằng Postman
 
-6. Đối với Security group, chọn SGforS3Endpoint:
+- Gọi api lấy log cũ.
 
-![sg](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint5.png)
+![query](/images/4-Workshop/4.5--registration-app/4.5.3--query-test/004_query.png)
 
-7. Giữ default policy - full access và click Create endpoint
+- Kết quả nhận được.
 
-![success](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint-success.png)
+![cold log](/images/4-Workshop/4.5--registration-app/4.5.3--query-test/005_cold_log.jpg)
 
-Chúc mừng bạn đã tạo thành công S3 interface endpoint. Ở bước tiếp theo, chúng ta sẽ kiểm tra interface endpoint.
+### Mô tả
+
+Các thao tác đăng nhập, truy vấn log ở app phân tích hoạt động đúng như mong đợi.

@@ -6,38 +6,48 @@ chapter : false
 pre : " <b> 4.5.2 </b> "
 ---
 
-Trong phần này, bạn sẽ tạo và kiểm tra Interface Endpoint  S3 bằng cách sử dụng môi trường truyền thống mô phỏng.
+## 4.4.2 Kiểm tra thao tác đăng ký app
 
-1. Quay lại Amazon VPC menu. Trong thanh điều hướng bên trái, chọn Endpoints, sau đó click Create Endpoint.
+### Mục tiêu
 
-2. Trong Create endpoint console:
-+ Đặt tên interface endpoint
-+ Trong Service category, chọn **aws services** 
+Kiểm tra thao tác đăng ký app có hoạt động đúng như mong đợi hay không.
 
-![name](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint1.png)
+### Các bước thực hiện
 
-3.  Trong Search box, gõ S3 và nhấn Enter. Chọn endpoint có tên com.amazonaws.us-east-1.s3. Đảm bảo rằng cột Type có giá trị Interface.
+Sau khi kiểm tra cấu hình hoàn tất, ta tiến hành đăng ký app theo các bước như sau:
 
-![service](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint2.png)
+1. Lấy địa chỉ của app đăng ký
 
-4. Đối với VPC, chọn VPC Cloud từ drop-down.
-{{% notice warning %}}
-Đảm bảo rằng bạn chọn "VPC Cloud" và không phải "VPC On-prem"
-{{% /notice %}}
-+ Mở rộng **Additional settings** và đảm bảo rằng Enable DNS name *không* được chọn (sẽ sử dụng điều này trong phần tiếp theo của workshop)
+![get address](/images/4-Workshop/4.5--registration-app/4.5.2--registration-test/001_get_address.png)
 
-![vpc](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint3.png)
+1. Dùng Postman gọi api lệnh đăng ký
 
-5. Chọn 2 subnets trong AZs sau: us-east-1a and us-east-1b
+![register app](/images/4-Workshop/4.5--registration-app/4.5.2--registration-test/002_register_app.png)
 
-![subnets](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint4.png)
+3. AWS sẽ gửi email xác nhận đến địa chỉ email mà ta đăng ký ở bước 2
 
-6. Đối với Security group, chọn SGforS3Endpoint:
+![email confirm](/images/4-Workshop/4.5--registration-app/4.5.2--registration-test/003_email_confirm.png)
 
-![sg](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint5.png)
+4. Xác nhận email đã đăng ký
 
-7. Giữ default policy - full access và click Create endpoint
+![email subcribed](/images/4-Workshop/4.5--registration-app/4.5.2--registration-test/004_email_subcribed.png)
 
-![success](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint-success.png)
+5. Xác nhận user mới đã tạo cho app được đăng ký
 
-Chúc mừng bạn đã tạo thành công S3 interface endpoint. Ở bước tiếp theo, chúng ta sẽ kiểm tra interface endpoint.
+![user created](/images/4-Workshop/4.5--registration-app/4.5.2--registration-test/005_user_created.png)
+
+6. Xác nhận user ứng với app đã cấp access key
+
+![access key](/images/4-Workshop/4.5--registration-app/4.5.2--registration-test/006_access_key.png)
+
+7. Xác nhận user ứng với app được cấp quyền đẩy log qua CloudWatch logs
+
+![CloudWatch policy](/images/4-Workshop/4.5--registration-app/4.5.2--registration-test/007_cloud_watch_policy.png)
+
+8. Xác nhận app đã tạo được lưu trong bảng AppClients trên DinamoDB
+
+![database saved](/images/4-Workshop/4.5--registration-app/4.5.2--registration-test/008_database_saved.png)
+
+### Mô tả
+
+Thao tác đăng ký app hoạt động đúng như mong đợi.

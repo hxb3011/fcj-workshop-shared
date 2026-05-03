@@ -1,43 +1,51 @@
 ---
-title : "Create an S3 Interface endpoint"
-date : 2024-01-01
+title : "Testing the registration portal in practice"
+date : 2026-05-02
 weight : 2
 chapter : false
 pre : " <b> 4.5.2 </b> "
 ---
 
-In this section you will create and test an S3 interface endpoint using the simulated on-premises environment deployed as part of this workshop.
+## 4.4.2 App Registration Operation Check
 
-1. Return to the Amazon VPC menu. In the navigation pane, choose Endpoints, then click Create Endpoint.
+### Objective
+Verify whether the app registration operation works as expected.
 
-2. In Create endpoint console:
-+ Name the interface endpoint
-+ In Service category, choose **aws services** 
+### Steps
 
-![name](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint1.png)
+After completing the configuration check, proceed with app registration using the following steps:
 
-3.  In the Search box, type S3 and press Enter. Select the endpoint named com.amazonaws.us-east-1.s3. Ensure that the Type column indicates Interface.
+1. Retrieve the address of the registration app
 
-![service](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint2.png)
+![get address](/images/4-Workshop/4.5--registration-app/4.5.2--registration-test/001_get_address.png)
 
-4. For VPC, select VPC Cloud from the drop-down.
-{{% notice warning %}}
-Make sure to choose "VPC Cloud" and not "VPC On-prem"
-{{% /notice %}}
-+ Expand **Additional settings** and ensure that Enable DNS name is *not* selected (we will use this in the next part of the workshop)
+2. Use Postman to call the registration API command
 
-![vpc](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint3.png)
+![register app](/images/4-Workshop/4.5--registration-app/4.5.2--registration-test/002_register_app.png)
 
-5. Select 2 subnets in the following AZs: us-east-1a and us-east-1b
+3. AWS will send a confirmation email to the address registered in step 2
 
-![subnets](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint4.png)
+![email confirm](/images/4-Workshop/4.5--registration-app/4.5.2--registration-test/003_email_confirm.png)
 
-6. For Security group, choose SGforS3Endpoint:
+4. Confirm the registered email
 
-![sg](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint5.png)
+![email subcribed](/images/4-Workshop/4.5--registration-app/4.5.2--registration-test/004_email_subcribed.png)
 
-7. Keep the default policy - full access and click Create endpoint
+5. Verify that a new user has been created for the registered app
 
-![success](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint-success.png)
+![user created](/images/4-Workshop/4.5--registration-app/4.5.2--registration-test/005_user_created.png)
 
-Congratulation on successfully creating S3 interface endpoint. In the next step, we will test the interface endpoint.
+6. Verify that the user associated with the app has been issued an access key
+
+![access key](/images/4-Workshop/4.5--registration-app/4.5.2--registration-test/006_access_key.png)
+
+7. Verify that the user associated with the app has been granted permission to push logs to CloudWatch Logs
+
+![CloudWatch policy](/images/4-Workshop/4.5--registration-app/4.5.2--registration-test/007_cloud_watch_policy.png)
+
+8. Verify that the created app has been saved in the **AppClients** table on DynamoDB
+
+![database saved](/images/4-Workshop/4.5--registration-app/4.5.2--registration-test/008_database_saved.png)
+
+### Description
+The app registration operation works as expected.
