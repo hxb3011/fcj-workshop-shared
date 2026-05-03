@@ -20,7 +20,7 @@ Sau khi kiểm tra cấu hình hoàn tất, ta tiến hành đăng ký app theo 
 
 ![get address](/images/4-Workshop/4.5--registration-app/4.5.2--registration-test/001_get_address.png)
 
-1. Dùng Postman gọi api lệnh đăng ký
+2. Dùng Postman gọi api lệnh đăng ký
 
 ![register app](/images/4-Workshop/4.5--registration-app/4.5.2--registration-test/002_register_app.png)
 

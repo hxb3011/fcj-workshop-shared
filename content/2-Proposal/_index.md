@@ -55,10 +55,10 @@ The pipeline employs a fully serverless AWS architecture to centralize log inges
 
 ### 4. Technical Implementation
 **Implementation Phases**
-- **Architecture Design**: Define serverless log pipeline and AWS service integration (Month 0).
-- **Cost Estimation & Optimization**: Use AWS Pricing Calculator to forecast expenses and adjust design (Month 1).
-- **System Setup & Integration**: Configure CloudWatch Agents, Lambda functions, and Glue jobs (Month 2).
-- **Testing & Deployment**: Validate ingestion, classification, and alerting workflows; deploy to production (Month 3).
+- **Architecture Design**: Define serverless log pipeline and AWS service integration (Weeks 1-2).
+- **Cost Estimation & Optimization**: Use AWS Pricing Calculator to forecast expenses and adjust design (Weeks 3-4).
+- **System Setup & Integration**: Configure CloudWatch Agents, Lambda functions, and Glue jobs (Weeks 5-6).
+- **Testing & Deployment**: Validate ingestion, classification, and alerting workflows; deploy to production (Weeks 7-8).
 
 **Technical Requirements**
 - **Log Sources**: Applications running on EC2/ECS with CloudWatch Agents.
@@ -69,11 +69,11 @@ The pipeline employs a fully serverless AWS architecture to centralize log inges
 
 ### 5. Timeline & Milestones
 **Project Timeline**
-- **Pre‑Implementation (Month 0)**: 1 month for planning and reviewing existing log collection methods.
-- **Implementation (Months 1‑3)**: 3 months.
-  - **Month 1**: Study AWS services and configure CloudWatch Agents for applications.
-    - **Month 2**: Design and adjust the pipeline architecture, integrate Lambda, SQS, DynamoDB, and S3.
-    - **Month 3**: Implement, test, and launch the full system with Glue jobs and Athena queries.
+- **Pre‑Implementation (Weeks 1-2)**: 2 weeks for planning and reviewing existing log collection methods.
+- **Implementation (Weeks 3-8)**: 6 weeks.
+  - **Weeks 3-4**: Study AWS services and configure CloudWatch Agents for applications.
+  - **Weeks 5-6**: Design and adjust the pipeline architecture, integrate Lambda, SQS, DynamoDB, and S3.
+  - **Weeks 7-8**: Implement, test, and launch the full system with Glue jobs and Athena queries.
   - **Post‑Launch**: Up to 1 year for optimization, monitoring, and scaling log ingestion.
 
 ### 6. Budget Estimation
