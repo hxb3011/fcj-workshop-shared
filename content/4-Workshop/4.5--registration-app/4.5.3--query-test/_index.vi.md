@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 4.5.3 </b> "
 ---
 
-## 4.4.2 Kiểm tra thao tác đăng ký app
+## 4.4.3 Kiểm tra thao tác đăng ký app
 
 ### Mục tiêu
 

@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 4.5.3 </b> "
 ---
 
-## 4.4.2 App Registration Operation Check
+## 4.4.3 App Registration Operation Check
 
 ### Objective
 Verify whether the login and log query operations in the Analysis App work as expected.
