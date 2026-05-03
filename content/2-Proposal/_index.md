@@ -77,22 +77,27 @@ The pipeline employs a fully serverless AWS architecture to centralize log inges
   - **Post‑Launch**: Up to 1 year for optimization, monitoring, and scaling log ingestion.
 
 ### 6. Budget Estimation
-You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).
+You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=80cb54c8b7d4fb953c3e3b6e9608818b6c73d2ed).
 
-### Infrastructure Costs
-- **AWS Services**:
-  - AWS Lambda: $0.00/month (1,000 requests, 512 MB).
-    - Amazon S3 Standard: $0.20/month (10 GB logs, 3,000 requests, 2 GB scanned).
-    - Data Transfer: $0.03/month (2 GB inbound, 2 GB outbound).
-    - Amazon DynamoDB: $0.10/month (metadata queries).
-    - Amazon SQS: $0.05/month (50,000 messages).
-    - Amazon SNS: $0.02/month (alerts & notifications).
-    - Amazon CloudWatch: $0.15/month (log ingestion & monitoring).
-    - AWS Glue ETL Jobs: $0.05/month (2 DPUs).
-    - AWS Glue Crawlers: $0.07/month (1 crawler).
-    - Amazon Athena: $0.10/month (SQL queries on S3).
-  
-**Total**: ~$0.77/month, ~$9.24/12 months.
+**Infrastructure Costs**
+- **Amazon S3 Standard**: $0.43/month
+  (10 GB storage, 2 GB scanned with S3 Select, 3,000 requests, 2 GB inbound, 2 GB outbound)
+- **AWS Lambda**: $0.20/month
+  (2 million requests, 512 MB ephemeral storage)
+- **Amazon Athena**: $0.15/month
+  (100 queries/day, each scanning 0.01 GB)
+- **Amazon SQS**: $0.02/month
+  (50,000 requests)
+- **Amazon SNS**: $0.00/month
+  (10 notifications, 10 requests)
+- **Amazon DynamoDB**: $0.03/month
+  (0.1 GB storage, item size 1 KB)
+- **Amazon CloudWatch**: $0.15/month
+  (basic metrics & events)
+- **AWS Glue**: $0.19/month
+  (2 DPUs for Spark job, 0.0625 DPUs for Python Shell, 2 crawlers)
+
+**Total**: ~$1.17/month, ~$14.04/12 months.
 No hardware costs are required since the system leverages AWS infrastructure.
 
 ### 7. Risk Assessment

@@ -76,21 +76,27 @@ Pipeline sử dụng kiến trúc AWS serverless hoàn chỉnh để tập trung
     - *Sau triển khai*: Tối ưu hóa, giám sát, và mở rộng ingestion logs trong vòng 1 năm.
 
 ### 6. Ước tính ngân sách
-Có thể xem chi phí trên [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).
+Có thể xem chi phí trên [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=80cb54c8b7d4fb953c3e3b6e9608818b6c73d2ed).
 
-*Chi phí hạ tầng*
-- AWS Lambda: $0.00/tháng (1,000 requests, 512 MB).
-- Amazon S3 Standard: $0.20/tháng (10 GB logs, 3,000 requests, 2 GB scanned).
-- Data Transfer: $0.03/tháng (2 GB inbound, 2 GB outbound).
-- Amazon DynamoDB: $0.10/tháng (metadata queries).
-- Amazon SQS: $0.05/tháng (50,000 messages).
-- Amazon SNS: $0.02/tháng (alerts & notifications).
-- Amazon CloudWatch: $0.15/tháng (log ingestion & monitoring).
-- AWS Glue ETL Jobs: $0.05/tháng (2 DPUs).
-- AWS Glue Crawlers: $0.07/tháng (1 crawler).
-- Amazon Athena: $0.10/tháng (SQL queries trên S3).
-
-*Tổng*: ~\$0.77/tháng, ~\$9.24/12 tháng.
+**Chi phí hạ tầng**
+- **Amazon S3 Standard**: $0.43/tháng
+  (10 GB lưu trữ, 2 GB quét bằng S3 Select, 3,000 requests, 2 GB inbound, 2 GB outbound)
+- **AWS Lambda**: $0.20/tháng
+  (2 triệu requests, 512 MB ephemeral storage)
+- **Amazon Athena**: $0.15/tháng
+  (100 queries/ngày, mỗi query quét 0.01 GB)
+- **Amazon SQS**: $0.02/tháng
+  (50,000 requests)
+- **Amazon SNS**: $0.00/tháng
+  (10 notifications, 10 requests)
+- **Amazon DynamoDB**: $0.03/tháng
+  (0.1 GB lưu trữ, item size 1 KB)
+- **Amazon CloudWatch**: $0.15/tháng
+  (metrics & events cơ bản)
+- **AWS Glue**: $0.19/tháng
+  (2 DPUs cho Spark job, 0.0625 DPUs cho Python Shell, 2 crawlers)
+  
+**Tổng**: ~$1.17/tháng, ~$14.04/12 tháng.
 Không cần chi phí phần cứng vì hệ thống tận dụng hạ tầng AWS.
 
 ### 7. Đánh giá rủi ro
