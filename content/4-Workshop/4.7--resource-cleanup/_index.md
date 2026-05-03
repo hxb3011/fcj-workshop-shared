@@ -5,28 +5,27 @@ weight : 7
 chapter : false
 pre : " <b> 4.7. </b> "
 ---
-Congratulations on completing this workshop! 
-In this workshop, you learned architecture patterns for accessing Amazon S3 without using the Public Internet. 
-+ By creating a gateway endpoint, you enabled direct communication between EC2 resources and Amazon S3, without traversing an Internet Gateway. 
-+ By creating an interface endpoint you extended S3 connectivity to resources running in your on-premises data center via AWS Site-to-Site VPN or Direct Connect. 
+### Clean Up Process
+- Cleaning up resources after completing the workshop is important to optimize costs and keep your AWS environment organized. Resources such as EC2 instances, RDS, and others will continue to charge if they are not removed.
 
 #### Clean up
-1. Navigate to Hosted Zones on the left side of Route 53 console. Click the name of *s3.us-east-1.amazonaws.com* zone. Click Delete and confirm deletion by typing delete. 
+- Since the entire infrastructure was deployed using Terraform, the clean up process is pretty straightforward.
+1. Open Terminal (by either Command Prompt, Windows PowerShell, or VS Code) in the project's root directory (where the configuration files with the extension .tf are located).
+2. Run the following command: *terraform destroy*.
+3. Terraform will display the list of resources to be deleted. Review them.
+4. You will see a confirmation. Type *yes* to confirm the deletion.
+5. Wait for the resources to be deleted.
 
-![hosted zone](/images/5-Workshop/5.6-Cleanup/delete-zone.png)
+#### Quick note on S3 Buckets
+- If your bucket still contains log data, Terraform will display an error because AWS does not allow the deletion of non-empty buckets. In that case:
+1. In the console, go to the **S3 console** (by typing on search bar *S3*).
+2. Select the log bucket and click empty.
+3. In the confirmation screen, type *permanently delete*.
+4. Once the bucket is empty, return to the Terminal and rerun the *terraform destroy* command.
 
-2. Disassociate the Route 53 Resolver Rule - myS3Rule from "VPC Onprem" and Delete it. 
-
-![hosted zone](/images/5-Workshop/5.6-Cleanup/vpc.png)
-
-4. Open the CloudFormation console  and delete the two CloudFormation Stacks that you created for this lab:
-+ PLOnpremSetup
-+ PLCloudSetup
-
-![delete stack](/images/5-Workshop/5.6-Cleanup/delete-stack.png)
-
-5. Delete S3 buckets
-+ Open S3 console
-+ Choose the bucket we created for the lab, click and confirm empty. Click delete and confirm delete.
-
-![delete s3](/images/5-Workshop/5.6-Cleanup/delete-s3.png)
+#### Final Verification
+- After Terraform reports success (**Destroy complete!**), visit the AWS Management Console to ensure the following key resources have been removed.
+1. EC2 instances (check status: **Terminated**).
+2. CloudWatch Log Groups, Glue Databases, Tables.
+3. IAM Roles, SNS, SQS.
+4. VPC and other services.

@@ -5,31 +5,20 @@ weight: 6
 chapter: false
 pre: " <b> 4.6 </b> "
 ---
+## 4.6 XỬ LÝ LOG THỜI GIAN THỰC VỚI AMAZON KINESIS
 
-Xin chúc mừng bạn đã hoàn thành xong lab này!
-Trong lab này, bạn đã học về các mô hình kiến trúc để truy cập Amazon S3 mà không sử dụng Public Internet.
+### 1. Đề xuất nghiên cứu mở rộng
+- Do giới hạn về thời gian trong khuôn khổ kỳ thực tập và ưu tiên tính ổn định của hạ tầng cốt lõi, phần này được trình bày như một đề xuất nghiên cứu nâng cao. Mục tiêu là nâng cấp luồng dữ liệu từ xử lý theo đợt (*Batch Processing*) sang xử lý luồng thời gian thực (*Streaming Processing*) để tối ưu hóa khả năng phản ứng của hệ thống.
 
-+ Bằng cách tạo Gateway endpoint, bạn đã cho phép giao tiếp trực tiếp giữa các tài nguyên EC2 và Amazon S3, mà không đi qua Internet Gateway.
-Bằng cách tạo Interface endpoint, bạn đã mở rộng kết nối S3 đến các tài nguyên chạy trên trung tâm dữ liệu trên chỗ của bạn thông qua AWS Site-to-Site VPN hoặc Direct Connect.
+### 2. Mô tả giải pháp
+- Hệ thống đề xuất sử dụng **Amazon Kinesis Data Firehose** như một giải pháp nâng cao nhằm truyền phát log trực tiếp từ CloudWatch Logs về S3 Data Lake thay vì đợi gom nhóm dữ liệu.
+- Giải pháp này giúp giảm độ trễ của dữ liệu từ vài phút xuống vài giây, đảm bảo việc giám sát được các hệ thống nhạy cảm.
 
-#### Dọn dẹp
-1. Điều hướng đến Hosted Zones trên phía trái của bảng điều khiển Route 53. Nhấp vào tên của  s3.us-east-1.amazonaws.com zone. Nhấp vào Delete và xác nhận việc xóa bằng cách nhập từ khóa "delete".
+### 3. Kiến trúc cốt lõi
+- **Kinesis Data Stream**: Đóng vai trò là đầu vào để tiếp nhận khối lượng lớn log đồng thời từ nhiều nguồn mà không làm nghẽn hệ thống.
+- **Kinesis Data Analytics**: Thực hiện truy vấn SQL ngay lập tức nhằm phát hiện lỗi bất thường hoặc sự cố ngay lập tức.
+- **Kinesis Data Firehose**: Tự động chuyển đổi định dạng dữ liệu sang Parquet trước khi lưu vào S3 nhằm tối ưu hoá chi phí và hiệu suất cho Athena.
 
-![hosted zone](/images/5-Workshop/5.6-Cleanup/delete-zone.png)
-
-2. Disassociate Route 53 Resolver Rule - myS3Rule from "VPC Onprem" and Delete it. 
-
-![hosted zone](/images/5-Workshop/5.6-Cleanup/vpc.png)
-
-4.Mở console của CloudFormation và xóa hai stack CloudFormation mà bạn đã tạo cho bài thực hành này:
-+ PLOnpremSetup
-+ PLCloudSetup
-
-![delete stack](/images/5-Workshop/5.6-Cleanup/delete-stack.png)
-
-5. Xóa các S3 bucket
-
-+ Mở bảng điều khiển S3
-+ Chọn bucket chúng ta đã tạo cho lab, nhấp chuột và xác nhận là empty. Nhấp Delete và xác nhận delete.
-+ 
-![delete s3](/images/5-Workshop/5.6-Cleanup/delete-s3.png)
+### 4. Lợi ích
+- **Phản ứng tức thì**: Nếu Kinesis Analytics phát hiện log có lỗi thì cảnh báo qua SNS sẽ được kích hoạt gần như ngay lập tức.
+- **Khả năng mở rộng**: Hệ thống có thể xử lý hàng terabyte log mỗi giây mà không cần phải bảo trì hệ thống thủ công.
