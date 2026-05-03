@@ -12,13 +12,9 @@ pre: "<b> 4.3.2 </b>"
 
 Xác thực luồng xử lý dữ liệu từ SQS đến Lambda Processor.
 
----
-
 ### Dữ liệu đầu vào
 
 Dữ liệu kiểm thử được mô phỏng dưới dạng các log message từ SQS, bao gồm các trường như `appId`, `level`, `message` và `timestamp`.
-
----
 
 ### Các bước thực hiện
 
@@ -33,13 +29,9 @@ Dán dữ liệu JSON vào phần Event JSON.
 ![Add JSON](/images/4-Workshop/4.3--lambda-processor/4.3.2--processor-test/add-json1.png)  
 ![Add JSON](/images/4-Workshop/4.3--lambda-processor/4.3.2--processor-test/add-json2.png)  
 
----
-
 2. Thực thi Lambda function để xử lý dữ liệu.
 
 ![Lambda run](/images/4-Workshop/4.3--lambda-processor/4.3.2--processor-test/lambda-run.png)  
-
----
 
 3. Xác minh kết quả xử lý
 

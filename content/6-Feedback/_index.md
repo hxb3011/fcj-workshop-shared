@@ -21,8 +21,6 @@ pre: " <b> 6. </b> "
 
 **6. Policies / Benefits for Interns** The company provides support and allows for flexible scheduling when necessary. However, if possible, I hope the company could support access to some advanced, paid AWS tools.
 
----
-
 ### Other Questions
 
 * **What are you most satisfied with during your internship?** The enthusiastic support from my Mentors and the opportunity to gain hands-on experience with real-world Cloud services (AWS, EC2, S3, Terraform, etc.) rather than just studying theory. A clear testament to this is the successful completion of the group workshop utilizing multiple AWS services.
