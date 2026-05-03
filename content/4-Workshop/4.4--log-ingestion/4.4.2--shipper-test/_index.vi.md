@@ -1,43 +1,65 @@
 ---
-title : "Thực thi và Kiểm chứng Shipper"
-date : 2026-05-02
-weight : 2
-chapter : false
-pre : " <b> 4.4.2 </b> "
+title: "Chạy Lambda Shipper"
+date: 2024-01-01
+weight: 3
+chapter: false
+pre: "<b>4.4.2 </b>"
 ---
 
-Trong phần này, bạn sẽ tạo và kiểm tra Interface Endpoint  S3 bằng cách sử dụng môi trường truyền thống mô phỏng.
+## 4.4.2 Chạy Lambda Shipper
 
-1. Quay lại Amazon VPC menu. Trong thanh điều hướng bên trái, chọn Endpoints, sau đó click Create Endpoint.
+### Mục tiêu
 
-2. Trong Create endpoint console:
-+ Đặt tên interface endpoint
-+ Trong Service category, chọn **aws services** 
+Kiểm tra luồng ingest log từ CloudWatch đến hệ thống xử lý thông qua Lambda Shipper.
 
-![name](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint1.png)
+---
 
-3.  Trong Search box, gõ S3 và nhấn Enter. Chọn endpoint có tên com.amazonaws.us-east-1.s3. Đảm bảo rằng cột Type có giá trị Interface.
+### Các bước thực hiện
 
-![service](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint2.png)
+Sau khi cấu hình hoàn tất, tiến hành tạo log để mô phỏng dữ liệu đầu vào từ hệ thống.
 
-4. Đối với VPC, chọn VPC Cloud từ drop-down.
-{{% notice warning %}}
-Đảm bảo rằng bạn chọn "VPC Cloud" và không phải "VPC On-prem"
-{{% /notice %}}
-+ Mở rộng **Additional settings** và đảm bảo rằng Enable DNS name *không* được chọn (sẽ sử dụng điều này trong phần tiếp theo của workshop)
+1. Tạo log trong CloudWatch  
 
-![vpc](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint3.png)
+![Create log](/images/4-Workshop/4.4--log-ingestion/4.4.2--shipper-test/create-log.png)  
+*Hình 4.4.2-1: Tạo log trong CloudWatch.*
 
-5. Chọn 2 subnets trong AZs sau: us-east-1a and us-east-1b
+---
 
-![subnets](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint4.png)
+2. Lambda Shipper tiếp nhận và xử lý log  
 
-6. Đối với Security group, chọn SGforS3Endpoint:
+![Shipper run](/images/4-Workshop/4.4--log-ingestion/4.4.2--shipper-test/shipper.png)  
+*Hình 4.4.2-2: Lambda Shipper xử lý log từ CloudWatch.*
 
-![sg](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint5.png)
+---
 
-7. Giữ default policy - full access và click Create endpoint
+3. Message được đẩy vào SQS để tiếp tục xử lý  
 
-![success](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint-success.png)
+![SQS message](/images/4-Workshop/4.4--log-ingestion/4.4.2--shipper-test/sqs2.png)  
+*Hình 4.4.2-3: Message được chuyển vào SQS.*
 
-Chúc mừng bạn đã tạo thành công S3 interface endpoint. Ở bước tiếp theo, chúng ta sẽ kiểm tra interface endpoint.
+---
+
+4. Kiểm tra dữ liệu sau khi xử lý  
+
+- Dữ liệu log được lưu vào S3  
+- Dữ liệu được ghi nhận trong DynamoDB  
+- Email thông báo được gửi thành công  
+
+![DynamoDB result](/images/4-Workshop/4.4--log-ingestion/4.4.2--shipper-test/dynamodb2.png)  
+*Hình 4.4.2-4: Dữ liệu log được lưu trong DynamoDB sau khi ingest.*
+
+---
+
+### Mô tả luồng hoạt động
+
+- Log được tạo trong hệ thống và gửi đến CloudWatch  
+- Lambda Shipper được kích hoạt và xử lý log  
+- Dữ liệu được chuyển tiếp vào SQS  
+- Lambda Processor tiếp tục xử lý dữ liệu  
+- Kết quả được lưu vào S3, DynamoDB và gửi thông báo qua Email  
+
+---
+
+### Kết luận
+
+Kết quả cho thấy luồng ingest log hoạt động ổn định, dữ liệu được chuyển từ CloudWatch đến hệ thống xử lý một cách chính xác.
