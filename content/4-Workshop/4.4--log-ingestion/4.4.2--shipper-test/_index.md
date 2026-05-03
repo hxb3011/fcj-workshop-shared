@@ -12,7 +12,6 @@ pre: "<b> 4.4.2 </b>"
 
 Validate the log ingestion flow from CloudWatch to the processing system via Lambda Shipper.
 
----
 
 ### Implementation Steps
 
@@ -21,23 +20,17 @@ After completing the configuration, logs are generated to simulate input data fr
 1. Create logs in CloudWatch  
 
 ![Create log](/images/4-Workshop/4.4--log-ingestion/4.4.2--shipper-test/create-log.png)  
-*Figure 4.4.2-1: Creating logs in CloudWatch.*
 
----
 
 2. Lambda Shipper receives and processes the logs  
 
-![Shipper run](/images/4-Workshop/4.4--log-ingestion/4.4.2--shipper-test/shipper.png)  
-*Figure 4.4.2-2: Lambda Shipper processing logs from CloudWatch.*
+![Shipper run](/images/4-Workshop/4.4--log-ingestion/4.4.2--shipper-test/shipper.png) 
 
----
 
 3. Messages are pushed to SQS for further processing  
 
 ![SQS message](/images/4-Workshop/4.4--log-ingestion/4.4.2--shipper-test/sqs2.png)  
-*Figure 4.4.2-3: Messages delivered to SQS.*
 
----
 
 4. Verify processing results  
 
@@ -46,9 +39,7 @@ After completing the configuration, logs are generated to simulate input data fr
 - Email notifications are successfully sent  
 
 ![DynamoDB result](/images/4-Workshop/4.4--log-ingestion/4.4.2--shipper-test/dynamodb2.png)  
-*Figure 4.4.2-4: Log data stored in DynamoDB after ingestion.*
 
----
 
 ### Workflow Description
 
@@ -57,8 +48,6 @@ After completing the configuration, logs are generated to simulate input data fr
 - Data is forwarded to SQS  
 - Lambda Processor continues processing the data  
 - Results are stored in S3 and DynamoDB, and notifications are sent via email  
-
----
 
 ### Conclusion
 

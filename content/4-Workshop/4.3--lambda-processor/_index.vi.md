@@ -7,6 +7,9 @@ pre: "<b> 4.3 </b>"
 ---
 #4.3. Lambda Processor
 
+[4.3.1 Kiểm tra tài nguyên](./4.3.1--resource-check/_index.vi.md)  
+[4.3.2 Processor Test](./4.3.2--processor-test/_index.vi.md)  
+
 ## Tổng quan
 
 Trong hệ thống giám sát log, việc xử lý dữ liệu theo thời gian thực đóng vai trò quan trọng nhằm phát hiện sớm các sự cố. Do đó, phần này tập trung xây dựng một pipeline xử lý log sử dụng SQS và Lambda.

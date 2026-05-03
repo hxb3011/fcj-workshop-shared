@@ -6,71 +6,64 @@ chapter: false
 pre: "<b> 4.3.2 </b>"
 ---
 
-## 4.3.2 Processor Test
+## 4.3.2 Kiểm thử Processor
 
-### Objective
+### Mục tiêu
 
-Validate the data processing flow from SQS to the Lambda Processor.
-
----
-
-### Input Data
-
-Test data is simulated as log messages from SQS, including fields such as `appId`, `level`, `message`, and `timestamp`.
+Xác thực luồng xử lý dữ liệu từ SQS đến Lambda Processor.
 
 ---
 
-### Implementation Steps
+### Dữ liệu đầu vào
 
-After configuring all required resources, a test event is created to simulate input data from SQS.
-
-1. Create a test event named **TextSendingMessage** and input the data into the *Event JSON* section.
-
-![Create event](/images/4-Workshop/4.3.2--processor-test/create-event.png)  
-*Figure 4.3.2-1: Creating a test event for Lambda Processor.*
-
-Paste the JSON data into the Event JSON section.
-
-![Add JSON](/images/4-Workshop/4.3.2--processor-test/add-json1.png)  
-![Add JSON](/images/4-Workshop/4.3.2--processor-test/add-json2.png)  
-*Figure 4.3.2-2: Inputting JSON data into the test event.*
+Dữ liệu kiểm thử được mô phỏng dưới dạng các log message từ SQS, bao gồm các trường như `appId`, `level`, `message` và `timestamp`.
 
 ---
 
-2. Execute the Lambda function to process the data.
+### Các bước thực hiện
 
-![Lambda run](/images/4-Workshop/4.3.2--processor-test/lambda-run.png)  
-*Figure 4.3.2-3: Lambda Processor execution.*
+Sau khi cấu hình tất cả các tài nguyên cần thiết, tạo một test event để mô phỏng dữ liệu đầu vào từ SQS.
 
----
+1. Tạo một test event tên **TextSendingMessage** và nhập dữ liệu vào phần *Event JSON*.
 
-3. Verify the processing results
+![Create event](/images/4-Workshop/4.3--lambda-processor/4.3.2--processor-test/create-event.png)  
 
-- Log data is stored in S3.  
-  The S3 results confirm that the log data has been successfully stored after processing.
+Dán dữ liệu JSON vào phần Event JSON.
 
-![S3 result](/images/4-Workshop/4.3.2--processor-test/s3_1.png)  
-![S3 result](/images/4-Workshop/4.3.2--processor-test/s3_2.png)  
-*Figure 4.3.2-4: Log data stored in S3.*
-
-- Email notifications are successfully sent.
-
-![Email result](/images/4-Workshop/4.3.2--processor-test/email.png)  
-*Figure 4.3.2-5: Email notification after processing.*
+![Add JSON](/images/4-Workshop/4.3--lambda-processor/4.3.2--processor-test/add-json1.png)  
+![Add JSON](/images/4-Workshop/4.3--lambda-processor/4.3.2--processor-test/add-json2.png)  
 
 ---
 
-### Workflow Description
+2. Thực thi Lambda function để xử lý dữ liệu.
 
-- Messages are sent to SQS  
-- Lambda Processor is triggered  
-- Data is processed and:
-  - Stored in S3  
-  - Stored in DynamoDB  
-  - Notifications are sent via SNS  
+![Lambda run](/images/4-Workshop/4.3--lambda-processor/4.3.2--processor-test/lambda-run.png)  
 
 ---
 
-### Conclusion
+3. Xác minh kết quả xử lý
 
-The log processing system operates correctly, ensuring that data is processed, stored, and notifications are delivered successfully.
+- Dữ liệu log được lưu vào S3.  
+  Kết quả trên S3 xác nhận rằng dữ liệu log đã được lưu thành công sau khi xử lý.
+
+![S3 result](/images/4-Workshop/4.3--lambda-processor/4.3.2--processor-test/s3_1.png)  
+![S3 result](/images/4-Workshop/4.3--lambda-processor/4.3.2--processor-test/s3_2.png)  
+
+- Thông báo email được gửi thành công.
+
+![Email result](/images/4-Workshop/4.3--lambda-processor/4.3.2--processor-test/email.png)  
+
+
+### Mô tả luồng xử lý
+
+- Message được gửi đến SQS  
+- Lambda Processor được kích hoạt  
+- Dữ liệu được xử lý và:
+  - Lưu vào S3  
+  - Lưu vào DynamoDB  
+  - Gửi thông báo qua SNS  
+
+
+### Kết luận
+
+Hệ thống xử lý log hoạt động đúng, đảm bảo dữ liệu được xử lý, lưu trữ và gửi thông báo thành công.

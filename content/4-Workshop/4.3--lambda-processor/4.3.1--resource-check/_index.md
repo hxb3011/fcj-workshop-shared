@@ -12,8 +12,6 @@ pre: "<b> 4.3.1 </b>"
 
 Before performing the test, it is necessary to ensure that all required resources have been properly created and configured.
 
----
-
 ### DynamoDB Verification
 
 The system shows that three DynamoDB tables have been successfully created:
@@ -21,28 +19,19 @@ The system shows that three DynamoDB tables have been successfully created:
 - fcaj-v2-AppLogs  
 - fcaj-v2-NotiTTL  
 
-![DynamoDB tables](/status/images/4-Workshop/4.3--lambda-processor/4.3.1--resource-check/dynamodb.png)  
-*Figure 4.3.1-1: DynamoDB tables have been successfully created.*
-
----
+![DynamoDB tables](/images/4-Workshop/4.3--lambda-processor/4.3.1--resource-check/dynamodb.png)  
 
 ### SQS Verification
 
 The queue `fcaj-v2-log-queue` has been successfully created and is ready for use.
 
-![SQS queue](/status/images/4-Workshop/4.3--lambda-processor/4.3.1--resource-check/sqs.png)  
-*Figure 4.3.1-2: SQS queue has been successfully created.*
-
----
+![SQS queue](/images/4-Workshop/4.3--lambda-processor/4.3.1--resource-check/sqs.png)  
 
 ### Lambda Verification
 
 The Lambda function has been successfully deployed and configured to be triggered by SQS.
 
-![Lambda trigger](/status/images/4-Workshop/4.3--lambda-processor/4.3.1--resource-check/lambda.png)  
-*Figure 4.3.1-3: Lambda Processor is connected to SQS.*
-
----
+![Lambda trigger](/images/4-Workshop/4.3--lambda-processor/4.3.1--resource-check/lambda.png) 
 
 ### Conclusion
 

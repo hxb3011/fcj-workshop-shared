@@ -8,21 +8,23 @@ pre: "<b> 4.4 </b>"
 
 ## 4.4 Thu thập log
 
-### Mục tiêu
+[4.4.1 Kiểm tra tài nguyên](4.4.1--resource-check/_index.vi.md)  
+[4.4.2 Chạy Lambda Shipper](4.4.2--shipper-test/_index.vi.md)  
+[4.4.3 Nghiên cứu CloudWatch Agent](4.4.3--cw-agent-research/_index.vi.md)  
+
+### Mục tiêu  
 
 Thu thập log từ hệ thống thông qua CloudWatch và đưa vào pipeline xử lý.
 
-### Kiến trúc
+### Kiến trúc  
 
 Trong pipeline ingest, CloudWatch đóng vai trò thu thập log từ hệ thống. Lambda Shipper sẽ tiếp nhận log này và chuyển tiếp đến SQS để tiếp tục quá trình xử lý.
 
-
-### Mô tả kiến trúc
+### Mô tả kiến trúc  
 
 Trong hệ thống này, log được phát sinh từ ứng dụng và gửi đến CloudWatch. Sau đó, CloudWatch thực hiện việc thu thập (ingest) log và kích hoạt Lambda Shipper để xử lý. Lambda Shipper sẽ chuyển tiếp dữ liệu đến SQS để tiếp tục pipeline xử lý.
 
-
-### Vai trò của Lambda Shipper
+### Vai trò của Lambda Shipper  
 
 - Tiếp nhận log từ CloudWatch  
 - Xử lý và chuyển tiếp dữ liệu  

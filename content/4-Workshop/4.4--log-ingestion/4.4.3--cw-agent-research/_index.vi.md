@@ -12,15 +12,11 @@ pre: "<b> 4.4.3 </b>"
 
 Tìm hiểu CloudWatch Agent và cách sử dụng để thu thập log từ hệ thống thực tế, từ đó mở rộng khả năng ingest dữ liệu cho pipeline.
 
----
-
 ### Tổng quan
 
 CloudWatch Agent là một công cụ do AWS cung cấp, cho phép thu thập log và metric từ các máy chủ (EC2 hoặc on-premise) và gửi trực tiếp lên CloudWatch.
 
 Khác với việc tạo log thủ công trong CloudWatch, CloudWatch Agent giúp tự động hóa quá trình thu thập log từ hệ thống, đặc biệt hữu ích trong môi trường production.
-
----
 
 ### Cách hoạt động
 
@@ -32,8 +28,6 @@ Quy trình hoạt động của CloudWatch Agent bao gồm:
 - Gửi log lên CloudWatch Logs  
 - Từ CloudWatch, log tiếp tục đi vào pipeline xử lý (Lambda Shipper → SQS → Lambda Processor)  
 
----
-
 ### Ứng dụng trong hệ thống
 
 Trong hệ thống này, CloudWatch Agent có thể được sử dụng để:
@@ -42,8 +36,6 @@ Trong hệ thống này, CloudWatch Agent có thể được sử dụng để:
 - Tự động gửi log lên CloudWatch mà không cần thao tác thủ công  
 - Kết nối trực tiếp với pipeline ingest đã xây dựng ở phần 4.4  
 
----
-
 ### So sánh với cách ingest hiện tại
 
 | Tiêu chí | Log thủ công | CloudWatch Agent |
@@ -51,8 +43,6 @@ Trong hệ thống này, CloudWatch Agent có thể được sử dụng để:
 | Cách tạo log | Tạo test event | Tự động từ hệ thống |
 | Tính tự động | Thấp | Cao |
 | Ứng dụng thực tế | Hạn chế | Phù hợp production |
-
----
 
 ### Kết luận
 
