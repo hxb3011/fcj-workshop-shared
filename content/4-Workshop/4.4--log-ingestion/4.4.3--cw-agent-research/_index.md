@@ -1,59 +1,65 @@
 ---
-title : "Test the Interface Endpoint"
-date : 2024-01-01
-weight : 3
-chapter : false
-pre : " <b> 4.4.3 </b> "
+title: "CloudWatch Agent Research"
+date: 2024-01-01
+weight: 3
+chapter: false
+pre: "<b>4.4.3 </b>"
 ---
 
-#### Get the regional DNS name of S3 interface endpoint
-1. From the Amazon VPC menu, choose Endpoints.
+## 4.4.3 CloudWatch Agent Research
 
-2. Click the name of newly created endpoint: s3-interface-endpoint. Click details and save the regional DNS name of the endpoint (the first one) to your text-editor for later use. 
+### Objective
 
-![dns name](/images/5-Workshop/5.4-S3-onprem/dns.png)
+Study CloudWatch Agent and its usage for collecting logs from real systems, thereby extending the ingestion capability of the pipeline.
 
+---
 
-#### Connect to EC2 instance in "VPC On-prem"
+### Overview
 
-1. Navigate to **Session manager** by typing "session manager" in the search box 
+CloudWatch Agent is a tool provided by AWS that enables the collection of logs and metrics from servers (EC2 or on-premises) and sends them directly to CloudWatch.
 
-2. Click **Start Session**, and select the EC2 instance named **Test-Interface-Endpoint**. This EC2 instance is running in "VPC On-prem" and will be used to test connectivty to Amazon S3 through the Interface endpoint we just created. Session Manager will open a new browser tab with a shell prompt: **sh-4.2 $**
+Unlike manually generating logs in CloudWatch, CloudWatch Agent automates the log collection process from the system, making it especially useful in production environments.
 
-![Start session](/images/5-Workshop/5.4-S3-onprem/start-session.png)
+---
 
-3. Change to the ssm-user's home directory with command "cd ~"
+### How It Works
 
-4. Create a file named testfile2.xyz
-```
-fallocate -l 1G testfile2.xyz
-```
+The workflow of CloudWatch Agent includes:
 
-![user](/images/5-Workshop/5.4-S3-onprem/cli1.png)
+- Installing CloudWatch Agent on the server (EC2)  
+- Configuring the agent using a JSON file or setup wizard to define which logs to collect  
+- Reading logs from the system (e.g., `/var/log/...`)  
+- Sending logs to CloudWatch Logs  
+- From CloudWatch, logs continue through the processing pipeline (Lambda Shipper → SQS → Lambda Processor)  
 
+---
 
-5. Copy file to the same S3 bucket we created in section 3.2
+### Application in the System
 
-```
-aws s3 cp --endpoint-url https://bucket.<Regional-DNS-Name> testfile2.xyz s3://<your-bucket-name>
-``` 
-+ This command requires the --endpoint-url parameter, because you need to use the endpoint-specific DNS name to access S3 using an Interface endpoint.
-+ Do not include the leading ' * ' when copying/pasting the regional DNS name.
-+ Provide your S3 bucket name created earlier
+In this system, CloudWatch Agent can be used to:
 
-![copy file](/images/5-Workshop/5.4-S3-onprem/cli2.png)
+- Collect real logs from applications running on EC2  
+- Automatically send logs to CloudWatch without manual intervention  
+- Integrate directly with the ingestion pipeline developed in section 4.4  
 
+---
 
-Now the file has been added to your S3 bucket. Let check your S3 bucket in the next step.
+### Comparison with Current Ingestion Method
 
-#### Check Object in S3 bucket
+| Criteria | Manual Logs | CloudWatch Agent |
+|----------|------------|------------------|
+| Log generation | Test events | Automatic from system |
+| Automation level | Low | High |
+| Real-world applicability | Limited | Suitable for production |
 
-1. Navigate to S3 console
-2. Click Buckets
-3. Click the name of your bucket and you will see testfile2.xyz has been added to your bucket
+---
 
-![check bucket](/images/5-Workshop/5.4-S3-onprem/check-bucket.png)
+### Status
 
+This feature is currently under research and has not yet been fully implemented in the system.
 
+---
 
+### Conclusion
 
+CloudWatch Agent enables automated log collection and extends the ingestion pipeline from a testing environment to a real-world deployment scenario. It is a key component for building a complete monitoring and log processing system.
