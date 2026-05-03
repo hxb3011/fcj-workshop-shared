@@ -1,9 +1,9 @@
 ---
 title: "CloudWatch Agent Research"
-date: 2024-01-01
+date: 2026-05-02
 weight: 3
 chapter: false
-pre: "<b>4.4.3 </b>"
+pre: "<b> 4.4.3 </b>"
 ---
 
 ## 4.4.3 CloudWatch Agent Research

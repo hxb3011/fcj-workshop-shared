@@ -26,6 +26,5 @@ The system addresses the challenge of log data being fragmented across various s
 3. [Data Processing Flow from SQS](4.3--lambda-processor/)
 4. [Automated Log Ingestion Flow](4.4--log-ingestion/)
 5. [Registration App Operation](4.5--registration-app/)
-6. [Query and Analytics App Operation](4.6--query-app/)
-7. [Advanced Scaling Solutions](4.7--advanced-concepts/)
-8. [Resource Cleanup](4.8--resource-cleanup/)
+7. [Advanced Scaling Solutions](4.6--advanced-concepts/)
+8. [Resource Cleanup](4.7--resource-cleanup/)

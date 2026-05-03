@@ -1,9 +1,9 @@
 ---
 title: "Resource Check"
-date: 2024-01-01
-weight: 3
+date: 2026-05-02
+weight: 1
 chapter: false
-pre: "<b>4.3.1 </b>"
+pre: "<b> 4.3.1 </b>"
 ---
 
 ## 4.3.1 Resource Check

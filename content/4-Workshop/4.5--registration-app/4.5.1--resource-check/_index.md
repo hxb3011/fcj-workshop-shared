@@ -1,6 +1,6 @@
 ---
 title : "Prepare the environment"
-date : 2024-01-01
+date : 2025-05-02
 weight : 1
 chapter : false
 pre : " <b> 4.5.1 </b> "

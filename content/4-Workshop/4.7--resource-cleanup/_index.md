@@ -1,6 +1,6 @@
 ---
-title : "Clean up"
-date : 2024-01-01
+title : "Clean Up"
+date : 2025-05-02
 weight : 7
 chapter : false
 pre : " <b> 4.7. </b> "

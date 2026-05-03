@@ -1,9 +1,9 @@
 ---
 title: "Chạy Lambda Shipper"
-date: 2024-01-01
-weight: 3
+date: 2026-05-02
+weight: 2
 chapter: false
-pre: "<b>4.4.2 </b>"
+pre: "<b> 4.4.2 </b>"
 ---
 
 ## 4.4.2 Chạy Lambda Shipper

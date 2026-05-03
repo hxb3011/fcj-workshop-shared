@@ -1,9 +1,9 @@
 ---
 title : "Create an S3 Interface endpoint"
-date : 2024-01-01
-weight : 2
+date : 2025-05-02
+weight : 3
 chapter : false
-pre : " <b> 4.6.2 </b> "
+pre : " <b> 4.5.3 </b> "
 ---
 
 In this section you will create and test an S3 interface endpoint using the simulated on-premises environment deployed as part of this workshop.

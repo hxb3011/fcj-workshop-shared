@@ -1,6 +1,6 @@
 ---
-title : "Clean up"
-date : 2024-01-01
+title : "Advanced Concepts"
+date : 2025-05-02
 weight : 6
 chapter : false
 pre : " <b> 4.6. </b> "

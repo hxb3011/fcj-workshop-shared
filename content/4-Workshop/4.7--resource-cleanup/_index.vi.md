@@ -1,11 +1,10 @@
 ---
-title: "Hệ thống truy vấn & Phân tích"
+title: "Thu hồi tài nguyên"
 date: 2026-05-02
-weight: 6
+weight: 7
 chapter: false
-pre: " <b> 4.6. </b> "
+pre: " <b> 4.7. </b> "
 ---
-
 Xin chúc mừng bạn đã hoàn thành xong lab này!
 Trong lab này, bạn đã học về các mô hình kiến trúc để truy cập Amazon S3 mà không sử dụng Public Internet.
 

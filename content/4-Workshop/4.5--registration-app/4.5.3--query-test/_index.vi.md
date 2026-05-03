@@ -1,9 +1,9 @@
 ---
 title : "Kiểm thử truy vấn toàn diện"
 date : 2026-05-02
-weight : 2
+weight : 3
 chapter : false
-pre : " <b> 4.6.2 </b> "
+pre : " <b> 4.5.3 </b> "
 ---
 
 Trong phần này, bạn sẽ tạo và kiểm tra Interface Endpoint  S3 bằng cách sử dụng môi trường truyền thống mô phỏng.

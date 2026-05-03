@@ -1,10 +1,11 @@
 ---
-title: "Thu hồi tài nguyên"
-date: 2026-05-02
-weight: 8
+title: "Giải pháp nâng cao"
+date: 2025-05-02
+weight: 6
 chapter: false
-pre: " <b> 4.8. </b> "
+pre: " <b> 4.6 </b> "
 ---
+
 Xin chúc mừng bạn đã hoàn thành xong lab này!
 Trong lab này, bạn đã học về các mô hình kiến trúc để truy cập Amazon S3 mà không sử dụng Public Internet.
 
