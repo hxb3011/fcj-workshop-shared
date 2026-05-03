@@ -1,5 +1,5 @@
 ---
-title : "Prepare the environment"
+title : "Check the registration portal infrastructure"
 date : 2026-05-02
 weight : 1
 chapter : false

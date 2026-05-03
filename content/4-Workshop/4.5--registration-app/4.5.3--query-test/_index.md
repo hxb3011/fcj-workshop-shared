@@ -1,43 +1,36 @@
 ---
-title : "Create an S3 Interface endpoint"
-date : 2025-05-02
+title : "Comprehensive query testing"
+date : 2026-05-02
 weight : 3
 chapter : false
 pre : " <b> 4.5.3 </b> "
 ---
 
-In this section you will create and test an S3 interface endpoint using the simulated on-premises environment deployed as part of this workshop.
+## 4.4.2 App Registration Operation Check
 
-1. Return to the Amazon VPC menu. In the navigation pane, choose Endpoints, then click Create Endpoint.
+### Objective
+Verify whether the login and log query operations in the Analysis App work as expected.
 
-2. In Create endpoint console:
-+ Name the interface endpoint
-+ In Service category, choose **aws services** 
+### Retrieve the address of the Analysis App
 
-![name](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint1.png)
+![get address](/images/4-Workshop/4.5--registration-app/4.5.3--query-test/001_get_address.png)
 
-3.  In the Search box, type S3 and press Enter. Select the endpoint named com.amazonaws.us-east-1.s3. Ensure that the Type column indicates Interface.
+### Perform login using the login API via Postman to obtain an access token
 
-![service](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint2.png)
+![login](/images/4-Workshop/4.5--registration-app/4.5.3--query-test/002_login.png)
 
-4. For VPC, select VPC Cloud from the drop-down.
-{{% notice warning %}}
-Make sure to choose "VPC Cloud" and not "VPC On-prem"
-{{% /notice %}}
-+ Expand **Additional settings** and ensure that Enable DNS name is *not* selected (we will use this in the next part of the workshop)
+### Retrieve the most recent logs using the corresponding API via Postman and receive the results
 
-![vpc](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint3.png)
+![hot log](/images/4-Workshop/4.5--registration-app/4.5.3--query-test/003_hot_log.png)
 
-5. Select 2 subnets in the following AZs: us-east-1a and us-east-1b
+### Retrieve older logs using the corresponding API via Postman
+- Call the API to fetch older logs.
 
-![subnets](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint4.png)
+![query](/images/4-Workshop/4.5--registration-app/4.5.3--query-test/004_query.png)
 
-6. For Security group, choose SGforS3Endpoint:
+- Results obtained.
 
-![sg](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint5.png)
+![cold log](/images/4-Workshop/4.5--registration-app/4.5.3--query-test/005_cold_log.jpg)
 
-7. Keep the default policy - full access and click Create endpoint
-
-![success](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint-success.png)
-
-Congratulation on successfully creating S3 interface endpoint. In the next step, we will test the interface endpoint.
+### Description
+The login and log query operations in the Analysis App work as expected.
